@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matriXploit</title>
+    <link rel="stylesheet" href="./matriXploit_files/styles.css">
+    <script src="./matriXploit_files/particles.min.js.download"></script>
+    <style>
+        /* Add CSS for loading animation */
+        #loading-container {
+            display: none; /* Initially hide the loading animation */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+        #h2 {
+            color: white;
+            mix-blend-mode: difference;
+            text-align: center;
+            margin: 0;
+            font-size: 12px;
+            line-height: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-shadow: 0 0 3px;
+            padding: 0;
+            letter-spacing: 5px;
+        }
+
+        .div {
+            position: relative;
+            top: 0px;
+            left: 0%;
+            max-width: 200px;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(to right, white, black);
+            background-size: 200% 100%;
+            animation-delay: 2s;
+            border-radius: 10px;
+            box-shadow: 0 0 3px;
+            -webkit-box-reflect: below 1px linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+            animation: gradientAnimation 10s linear infinite reverse;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .div {
+                width: 500px;
+                left: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="button-container">
+            <button id="explore-button">
+                <span>Explore the Matrix</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading animation HTML -->
+    <div id="loading-container" class="div">
+        <p id="h2">Loading....<span id="lol"></span></p>
+    </div>
+
+    <script>
+        document.getElementById("explore-button").addEventListener("click", function() {
+            // Hide the container with a transition
+            document.getElementById("container").classList.add("hidden");
+            // Show the loading animation
+            document.getElementById("loading-container").style.display = "block";
+
+            // After a delay, navigate to another page
+            setTimeout(function() {
+                window.location.href = "matrixploit.html";
+            }, 5000); // Adjust the delay time as needed (5000ms = 5s)
+        });
+    </script>
+</body>
+</html>
