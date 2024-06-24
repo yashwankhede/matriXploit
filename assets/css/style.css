@@ -1,3 +1,79 @@
+body, h1, h2, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a background color and font styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #000000;
+  color: #00ffec;
+  line-height: 1.6;
+  margin: 0;
+  overflow-x: hidden;
+  height: 100%;
+}
+#particles-js{
+  width: 100%;
+  height: 100%;
+  background: #000000;
+}
+.particles-js-canvas-el{
+  position: fixed;
+  top: 0;
+}
+
+#container {
+  /* width: 80%; */
+  /* max-width: 600px; */
+  /* margin: 0 auto; */
+  /* padding: 20px; */
+  background-color: #2f2f2f; /* Dark background */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 6px rgba(0, 0, 0, 0.3); /* Grey shadow with 30% depth */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Courier New', Courier, monospace; /* Terminal-style font */
+  color: #00ff00; /* Green font color */
+  /* position: center; */
+  /* overflow: hidden; */
+}
+
+#coming-soon-message {
+  text-align: left; /* Align text to left */
+}
+
+#coming-soon-message h1 {
+  font-size: 1.5rem; /* Adjust font size */
+  margin-bottom: 10px; /* Add margin to separate elements */
+}
+
+#coming-soon-message p {
+  font-size: 1.2rem; /* Adjust font size */
+  margin-bottom: 15px; /* Add margin to separate elements */
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background-color: #00ff00; /* Green cursor */
+  animation: blink 0.8s infinite; /* Blink animation */
+}
+
+@keyframes blink {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0;
+  }
+}
+
+
 /*-----------------------------------*\
   #style.css
 \*-----------------------------------*/
@@ -155,7 +231,7 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--smoky-black); }
+/* body { background: var(--smoky-black); } */
 
 
 
@@ -1771,17 +1847,17 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   body::-webkit-scrollbar { width: 20px; }
 
-  body::-webkit-scrollbar-track { background: var(--smoky-black); }
+  /* body::-webkit-scrollbar-track { background: var(--smoky-black); } */
 
   body::-webkit-scrollbar-thumb {
     border: 5px solid var(--smoky-black);
-    background: hsla(0, 0%, 100%, 0.1);
+    /* background: hsla(0, 0%, 100%, 0.1); */
     border-radius: 20px;
     box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
                 inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
   }
 
-  body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
+  /* body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); } */
 
   body::-webkit-scrollbar-button { height: 60px; }
 
