@@ -175,7 +175,7 @@
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
+            <button class="navbar-link" data-nav-link>Letter</button>
           </li>
 
           <li class="navbar-item">
@@ -482,14 +482,101 @@
       <!--
         - #RESUME
       -->
-
-      <article class="resume" data-page="resume">
+      <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            color: aliceblue;
+        }
+        
+    </style>
+      <article class="resume" data-page="letter">
 
         <header>
-          <h2 class="h2 article-title">Clients</h2>
+          <h2 class="h2 article-title">Interns</h2>
         </header>
-
-        <section class="timeline">
+        <h1 class="h3" >Search Student Certificates</h1>
+        <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for names..">
+        <br><br>
+        <table  id="studentTable">
+            <tr>
+                <th>Sr. No.</th>
+                <th>Name</th>
+                <th>Offer Letter</th>
+                <th>Internship Certificate</th>
+            </tr>
+        </table>
+        <script>
+          const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQKRLOO354NXAKnvF7XR3qUVZwlUZLVfXwXuXAOeSAlcqLrdmjDNx6vQM9O2zB1WvyVvdea0JQzOTT9/pubhtml';
+  
+          async function fetchSheetData() {
+              const response = await fetch(sheetUrl);
+              const htmlText = await response.text();
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(htmlText, 'text/html');
+              const table = doc.querySelector('table');
+              return table;
+          }
+  
+          function populateTable(table) {
+              const studentTable = document.getElementById('studentTable');
+              const rows = table.querySelectorAll('tr');
+              rows.forEach((row, index) => {
+                  if (index > 1) { // Skip the header row
+                      const cells = row.querySelectorAll('td');
+                      const nameCell = cells[1]; // Assuming the second cell is the name
+                      if (nameCell && nameCell.innerText.trim() !== '') {
+                          const tr = document.createElement('tr');
+                          cells.forEach(cell => {
+                              const td = document.createElement('td');
+                              td.textContent = cell.innerText;
+                              tr.appendChild(td);
+                          });
+                          studentTable.appendChild(tr);
+                      }
+                  }
+              });
+          }
+  
+          function searchFunction() {
+              const input = document.getElementById('searchInput');
+              const filter = input.value.toUpperCase();
+              const table = document.getElementById('studentTable');
+              const tr = table.getElementsByTagName('tr');
+  
+              for (let i = 1; i < tr.length; i++) {
+                  tr[i].style.display = 'none';
+                  const td = tr[i].getElementsByTagName('td');
+                  for (let j = 0; j < td.length; j++) {
+                      if (td[j]) {
+                          const txtValue = td[j].textContent || td[j].innerText;
+                          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                              tr[i].style.display = '';
+                              break;
+                          }
+                      }
+                  }
+              }
+          }
+  
+          window.onload = async () => {
+              try {
+                  const table = await fetchSheetData();
+                  populateTable(table);
+              } catch (error) {
+                  console.error('Error fetching the sheet data:', error);
+                  alert('Failed to fetch the data from the sheet.');
+              }
+          };
+      </script>
+        <!-- <section class="timeline">
 
           <div class="title-wrapper">
             <div class="icon-box">
@@ -664,7 +751,7 @@
 
           </ul>
 
-        </section>
+        </section> -->
 
       </article>
 
